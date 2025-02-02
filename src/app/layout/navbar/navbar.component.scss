@@ -1,21 +1,11 @@
-a {
-  cursor: pointer;
+.active-link {
+  background-color: var(--main-color);
+  color: white;
 }
-@import "./../../../styles.scss";
-@layer navLayers {
-  .active-item {
-    &:hover {
-      background-color: transparent;
-      // border: 2px solid  !important;
-      // @apply !text-main-color !border-[2px] border-solid !border-main-color;
-    }
-    @apply bg-green-500 !text-white transition-all rounded-lg;
-  }
-  .parent-list-items li {
-    border: 2px solid transparent;
-    a:hover {
-      border-color: yellow !important;
-      // @apply !border-main-color;
-    }
-  }
+ul li a[routerLink] {
+  border: 2px solid transparent;
+  // border-radius: 0.125rem; /* 2px */
+}
+ul li:hover a[routerLink] {
+  border: 2px solid var(--main-color);
 }

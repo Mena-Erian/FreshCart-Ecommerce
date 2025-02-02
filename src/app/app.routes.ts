@@ -1,21 +1,80 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { CartComponent } from './pages/cart/cart.component';
-import { ProductsComponent } from './pages/products/products.component';
-import { CategoriesComponent } from './pages/categories/categories.component';
-import { BrandsComponent } from './pages/brands/brands.component';
-import { LoginComponent } from './pages/login/login.component';
+import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
+import { BlankLayoutComponent } from './layout/blank-layout/blank-layout.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent, title: 'FC | Login' },
-  { path: 'home', component: HomeComponent, title: 'FC | Home' },
-  { path: 'cart', component: CartComponent, title: 'FC | Cart' },
-  { path: 'products', component: ProductsComponent, title: 'FC | Products' },
+
   {
-    path: 'categories',
-    component: CategoriesComponent,
-    title: 'FC | Categories',
+    path: '',
+    component: BlankLayoutComponent,
+    children: [
+      {
+        path: 'home',
+        loadComponent: () =>
+          import('./pages/home/home.component').then((c) => c.HomeComponent),
+        title: 'Home',
+      },
+      {
+        path: 'cart',
+        loadComponent: () =>
+          import('./pages/cart/cart.component').then((c) => c.CartComponent),
+        title: 'Cart',
+      },
+      {
+        path: 'products',
+        loadComponent: () =>
+          import('./pages/products/products.component').then(
+            (c) => c.ProductsComponent
+          ),
+        title: 'Products',
+      },
+      {
+        path: 'brands',
+        loadComponent: () =>
+          import('./pages/brands/brands.component').then(
+            (c) => c.BrandsComponent
+          ),
+        title: 'Brands',
+      },
+      {
+        path: 'categories',
+        loadComponent: () =>
+          import('./pages/categories/categories.component').then(
+            (c) => c.CategoriesComponent
+          ),
+        title: 'Categories',
+      },
+      {
+        path: 'checkout',
+        loadComponent: () =>
+          import('./pages/checkout/checkout.component').then(
+            (c) => c.CheckoutComponent
+          ),
+        title: 'checkout',
+      },
+    ],
   },
-  { path: 'brands', component: BrandsComponent, title: 'FC | Brands' },
+  {
+    path: '',
+    component: AuthLayoutComponent,
+    children: [
+      {
+        path: 'login',
+        loadComponent: () =>
+          import('./pages/login/login.component').then((c) => c.LoginComponent),
+        title: 'Login',
+      },
+      {
+        path: 'register',
+        loadComponent: () =>
+          import('./pages/register/register.component').then(
+            (c) => c.RegisterComponent
+          ),
+        title: 'Register',
+      },
+      { path: '**', component: NotFoundComponent, title: 'Not Found' },
+    ],
+  },
 ];

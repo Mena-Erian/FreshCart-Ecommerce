@@ -1,21 +1,18 @@
-<nav class="bg-gray-200 border-gray-200 dark:bg-gray-900">
+<nav class="bg-gray-100 border-gray-200 dark:bg-gray-900">
   <div
-    class="bg-gray-200 drop-shadow-sm max-w-screen-xl flex flex-wrap md:flex-nowrap items-center justify-between mx-auto p-4"
+    class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto px-4 py-2"
   >
-    <a
-      routerLink="/home"
-      class="flex items-center space-x-3 rtl:space-x-reverse"
-    >
+    <a class="flex items-center space-x-3 rtl:space-x-reverse">
       <img
-        src="./../../images/freshcart-logo.svg"
+        src="./../images/freshcart-logo.svg"
         class="h-8"
-        alt="fresh cart Logo"
+        alt="FreshCart Logo"
       />
     </a>
     <button
       data-collapse-toggle="navbar-default"
       type="button"
-      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-400 dark:focus:ring-gray-600"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
       aria-controls="navbar-default"
       aria-expanded="false"
     >
@@ -36,88 +33,121 @@
         />
       </svg>
     </button>
-    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+    <div class="hidden w-full md:flex flex-grow md:w-auto" id="navbar-default">
+      @if(this.isLogin()){
       <ul
-        class="parent-list-items font-medium transition-all duration-1000 flex flex-col p-4 mt-4 border border-green-400 rounded-lg g-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-400"
+        class="font-medium gap-y-1 md:gap-y-0 md:items-center capitalize flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-3 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
       >
         <li>
           <a
-            routerLinkActive="bg-green-400 py-4 px-6 text-white"
             routerLink="/home"
-            class="block py-2 px-3 text-white bg-green-400 rounded-sm md:bg-transparent md:text-green-400 dark:text-white md:dark:text-green-500"
+            routerLinkActive="active-link"
+            class="block py-2 px-2 text-gray-700 rounded-2xl"
             aria-current="page"
-            >Home</a
+            >home</a
           >
         </li>
         <li>
           <a
-            routerLinkActive="active-item"
-            routerLink="/cart"
-            class="block py-2 px-3 text-gray-900 rounded-sm md:hover:bg-transparent md:hover:text-green-400 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-400 dark:hover:text-white md:dark:hover:bg-transparent"
-            >Cart</a
-          >
-        </li>
-        <li>
-          <a
-            routerLinkActive="active-item"
             routerLink="/products"
-            class="block py-2 px-3 text-gray-900 rounded-sm md:hover:bg-transparent md:hover:text-green-400 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-400 dark:hover:text-white md:dark:hover:bg-transparent"
-            >Products</a
+            routerLinkActive="active-link"
+            class="block py-2 px-2 text-gray-700 rounded-2xl"
+            aria-current="page"
+            >products</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/cart"
+            routerLinkActive="active-link"
+            class="block py-2 px-2 text-gray-700 rounded-2xl"
+            aria-current="page"
+            >cart</a
           >
         </li>
         <li>
           <a
             routerLink="/categories"
-            class="block py-2 px-3 text-gray-900 rounded-sm md:hover:bg-transparent md:hover:text-green-400 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-400 dark:hover:text-white md:dark:hover:bg-transparent"
-            >Categories</a
+            routerLinkActive="active-link"
+            class="block py-2 px-2 text-gray-700 rounded-2xl"
+            aria-current="page"
+            >categories</a
           >
         </li>
         <li>
           <a
             routerLink="/brands"
-            class="block py-2 px-3 text-gray-900 rounded-sm md:hover:bg-transparent md:hover:text-green-400 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-400 dark:hover:text-white md:dark:hover:bg-transparent"
-            >Brands</a
+            routerLinkActive="active-link"
+            class="block py-2 px-2 text-gray-700 rounded-2xl"
+            aria-current="page"
+            >brands</a
           >
         </li>
       </ul>
+      }
+      <ul
+        class="font-medium items-center capitalize ms-auto flex flex-col px-4 pb-4 pt-0 md:p-0 border border-gray-100 rounded-lg md:flex-row md:space-x-1 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+      >
+        <li>
+          <a href="#" class="hidden md:block py-2 px-1text-gray-700"
+            ><i class="fa-brands fa-facebook-f"></i
+          ></a>
+        </li>
+        <li>
+          <a href="#" class="hidden md:block py-2 px-1 text-gray-700"
+            ><i class="fa-brands fa-twitter"></i
+          ></a>
+        </li>
+        <li>
+          <a class="hidden md:block py-2 px-1 text-gray-700"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+        </li>
+        <li>
+          <a class="hidden md:block py-2 px-1text-gray-700" href="#"
+            ><i class="fa-brands fa-tiktok"></i
+          ></a>
+        </li>
+        <li>
+          <a class="hidden md:block py-2 px-1 text-gray-700" href="#"
+            ><i class="fa-brands fa-linkedin"></i
+          ></a>
+        </li>
+        <li>
+          <a class="hidden md:block py-2 px-1 text-gray-700" href="#"
+            ><i class="fa-brands fa-youtube"></i
+          ></a>
+        </li>
+        @if (!this.isLogin()) {
+        <li>
+          <a
+            routerLink="/login"
+            routerLinkActive="active-link"
+            class="block py-2 px-2 text-gray-700 rounded-2xl"
+            aria-current="page"
+            >log in</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/register"
+            routerLinkActive="active-link"
+            class="block py-2 px-2 text-gray-700 rounded-2xl"
+            aria-current="page"
+            >register</a
+          >
+        </li>
+        } @else {
+        <li>
+          <a
+            role="button"
+            class="block py-2 px-2 text-gray-700 rounded-2xl"
+            aria-current="page"
+            >log Out</a
+          >
+        </li>
+        }
+      </ul>
     </div>
-    <ul class="bg-pink-400 font-medium hidden md:flex p-4 gap-2">
-      <li>
-        <a>
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-      </li>
-      <li>
-        <a>
-          <i class="fa-brands fa-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a>
-          <i class="fa-brands fa-tiktok"></i>
-        </a>
-      </li>
-      <li>
-        <a>
-          <i class="fa-brands fa-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a>
-          <i class="fa-brands fa-linkedin-in"></i>
-        </a>
-      </li>
-      <li>
-        <a>
-          <i class="fa-brands fa-youtube"></i>
-        </a>
-      </li>
-      <li>
-        <a> Login </a>
-      </li>
-      <li>
-        <a> Register </a>
-      </li>
-    </ul>
   </div>
 </nav>
