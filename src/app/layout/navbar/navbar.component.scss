@@ -1,0 +1,21 @@
+a {
+  cursor: pointer;
+}
+@import "./../../../styles.scss";
+@layer navLayers {
+  .active-item {
+    &:hover {
+      background-color: transparent;
+      // border: 2px solid  !important;
+      // @apply !text-main-color !border-[2px] border-solid !border-main-color;
+    }
+    @apply bg-green-500 !text-white transition-all rounded-lg;
+  }
+  .parent-list-items li {
+    border: 2px solid transparent;
+    a:hover {
+      border-color: yellow !important;
+      // @apply !border-main-color;
+    }
+  }
+}
