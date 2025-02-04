@@ -88,36 +88,20 @@
       <ul
         class="font-medium items-center capitalize ms-auto flex flex-col px-4 pb-4 pt-0 md:p-0 border border-gray-100 rounded-lg md:flex-row md:space-x-1 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
       >
-        <li>
-          <a href="#" class="hidden md:block py-2 px-1text-gray-700"
-            ><i class="fa-brands fa-facebook-f"></i
-          ></a>
-        </li>
-        <li>
-          <a href="#" class="hidden md:block py-2 px-1 text-gray-700"
-            ><i class="fa-brands fa-twitter"></i
-          ></a>
-        </li>
-        <li>
-          <a class="hidden md:block py-2 px-1 text-gray-700"
-            ><i class="fa-brands fa-instagram"></i
-          ></a>
-        </li>
-        <li>
-          <a class="hidden md:block py-2 px-1text-gray-700" href="#"
-            ><i class="fa-brands fa-tiktok"></i
-          ></a>
-        </li>
-        <li>
-          <a class="hidden md:block py-2 px-1 text-gray-700" href="#"
-            ><i class="fa-brands fa-linkedin"></i
-          ></a>
-        </li>
-        <li>
-          <a class="hidden md:block py-2 px-1 text-gray-700" href="#"
-            ><i class="fa-brands fa-youtube"></i
-          ></a>
-        </li>
+        <a href="#" class="hidden md:block py-2 px-1 text-gray-700">
+          <fa-icon [icon]="faFacebook"></fa-icon>
+        </a>
+        <a href="#" class="hidden md:block py-2 px-1 text-gray-700">
+          <fa-icon [icon]="faTwitter"></fa-icon> </a
+        ><a href="#" class="hidden md:block py-2 px-1 text-gray-700">
+          <fa-icon [icon]="faTiktok"></fa-icon> </a
+        ><a href="#" class="hidden md:block py-2 px-1 text-gray-700">
+          <fa-icon [icon]="faInstagram"></fa-icon> </a
+        ><a href="#" class="hidden md:block py-2 px-1 text-gray-700">
+          <fa-icon [icon]="faLinkedin"></fa-icon> </a
+        ><a href="#" class="hidden md:block py-2 px-1 text-gray-700">
+          <fa-icon [icon]="faYoutube"></fa-icon>
+        </a>
         @if (!this.isLogin()) {
         <li>
           <a
