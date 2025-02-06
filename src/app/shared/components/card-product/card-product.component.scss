@@ -1,0 +1,10 @@
+.card {
+  button {
+    transform: translateY(150%);
+    opacity: 0;
+  }
+  &:hover button {
+    transform: translateY(-10%);
+    opacity: 1;
+  }
+}
