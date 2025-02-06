@@ -11,7 +11,7 @@
   </div>
   <div class="card-body px-2 py-4">
     <h4 class="text-green-500 text-xs">{{ product()?.category?.name }}</h4>
-    <h3 class="font-medium">
+    <h3 class="font-medium mb-2 mt-1">
       {{ product()?.title?.split(" ", 2)?.join(" ") }}
     </h3>
     <div class="flex justify-between items-centers">
@@ -23,10 +23,11 @@
     </div>
   </div>
   <button
-    class="bg-green-500 hover:bg-main-color/80 transition-all w-[90%] block mx-auto text-white py-2 px-10 border rounded-md"
+    class="bg-green-500 hover:bg-main-color/80 transition-all absolute bottom-1 left-[50%] -translate-x-1/2 px-6 mx-auto text-white py-2 sm:px-4 border rounded-md"
   >
-    Add To Cart
+    @if (this.width< 640) { Add To Cart }@else {
     <fa-icon [icon]="faPlus" class="text-white ms-1"></fa-icon>
+    }
   </button>
 </div>
 }

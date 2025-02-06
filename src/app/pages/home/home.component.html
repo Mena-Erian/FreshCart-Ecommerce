@@ -1,6 +1,67 @@
 <section>
-  <div class="category bg-gray-400 my-5"></div>
-
+  <div class="bg-gray-300 grid grid-cols-[70%_minmax(0,1fr)]">
+    <div class="">
+      <owl-carousel-o [options]="customMainOptions">
+        <ng-template carouselSlide>
+          <img
+            src="./images/blog-img-2.jpeg"
+            alt="slider1"
+            class="w-full object-cover h-[300px]"
+          />
+        </ng-template>
+        <ng-template carouselSlide>
+          <img
+            src="./images/slider-image-1.jpeg"
+            alt="slider1"
+            class="w-full object-cover h-[300px]"
+          />
+        </ng-template>
+        <ng-template carouselSlide>
+          <img
+            src="./images/blog-img-1.jpeg"
+            alt="slider1"
+            class="w-full object-cover h-[300px]"
+          />
+        </ng-template>
+        <ng-template carouselSlide>
+          <img
+            src="./images/slider-image-3.jpeg"
+            alt="slider1"
+            class="w-full object-cover h-[300px]"
+          />
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+    <div class="flex flex-wrap">
+      <img
+        src="./images/slider-image-2.jpeg"
+        alt=""
+        class="w-full object-cover h-[150px]"
+      />
+      <img
+        src="./images/slider-image-3.jpeg"
+        alt=""
+        class="w-full object-cover h-[150px]"
+      />
+    </div>
+  </div>
+</section>
+<section class="category my-5">
+  <h4 class="my-4 text-4xl">Popular Categories</h4>
+  <owl-carousel-o [options]="customOptions">
+    @for (categ of categories; track $index) {
+    <ng-template carouselSlide>
+      <img
+        [src]="categ.image"
+        class="w-full h-[220px] object-fill"
+        [alt]="categ.name"
+      />
+      <h4 class="text-green-500 text-md">{{ categ.name }}</h4>
+    </ng-template>
+    }
+  </owl-carousel-o>
+</section>
+<section class="px-3">
   <h4 class="my-4 text-4xl">Popular Products</h4>
   <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-7">
     @for (prod of products; track $index) {

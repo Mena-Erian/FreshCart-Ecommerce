@@ -13,12 +13,16 @@ import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
+  //ngx-owl-carousel-o
   customOptions: OwlOptions = {
     loop: true,
-    mouseDrag: false,
-    touchDrag: false,
+    mouseDrag: true,
+    touchDrag: true,
     pullDrag: false,
-    dots: false,
+    dots: true,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    autoplayHoverPause: true,
     navSpeed: 700,
     navText: ['', ''],
     responsive: {
@@ -34,8 +38,29 @@ export class HomeComponent implements OnInit {
       940: {
         items: 4,
       },
+      1024: {
+        items: 5,
+      },
     },
-    nav: true,
+    nav: false,
+  };
+  customMainOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    dots: false,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    autoplayHoverPause: true,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1,
+      },
+    },
+    nav: false,
   };
   private readonly productsService = inject(ProductsService);
   private readonly categoryService = inject(CategoryService);

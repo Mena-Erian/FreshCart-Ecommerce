@@ -1,10 +1,10 @@
-.card {
-  button {
-    transform: translateY(150%);
-    opacity: 0;
-  }
-  &:hover button {
-    transform: translateY(-10%);
-    opacity: 1;
-  }
-}
+// @media screen and (min-width: 640px) {
+//   .card {
+//     button {
+//       transform: rotate(360deg);
+//     }
+//     &:hover button {
+//       transform: rotate(0deg);
+//     }
+//   }
+// }

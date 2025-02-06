@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environment/env';
+import { environment } from '../../environment/environment';
 import { Observable } from 'rxjs';
 import { ICategoryRoot } from '../../../shared/interfaces/iCategory';
 
