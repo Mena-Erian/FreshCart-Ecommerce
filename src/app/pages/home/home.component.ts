@@ -84,7 +84,7 @@ export class HomeComponent implements OnInit {
       next: (res) => {
         this.categoriesRootRes = res;
         this.categories = this.categoriesRootRes.data;
-        console.log(this.categories);
+        // console.log(this.categories);
       },
       error: (res) => {
         console.log(res);

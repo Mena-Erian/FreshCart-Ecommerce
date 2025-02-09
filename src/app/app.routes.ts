@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 import { BlankLayoutComponent } from './layout/blank-layout/blank-layout.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { authGuard } from './core/guards/auth.guard';
+import { islogedGuard } from './core/guards/isloged.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -9,6 +11,7 @@ export const routes: Routes = [
   {
     path: '',
     component: BlankLayoutComponent,
+    canActivate: [authGuard],
     children: [
       {
         path: 'home',
@@ -59,7 +62,9 @@ export const routes: Routes = [
   {
     path: '',
     component: AuthLayoutComponent,
+    canActivate: [islogedGuard],
     children: [
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
       {
         path: 'login',
         loadComponent: () =>

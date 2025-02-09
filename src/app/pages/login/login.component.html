@@ -1,1 +1,135 @@
-<p>login works!</p>
+<section class="w-11/12 mx-auto sm:w-full sm:mx-0">
+  <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+    <div class="mb-4">
+      <label
+        for="mail"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Email:</label
+      >
+      @let emilControl=loginForm.get('email');
+      <input
+        formControlName="email"
+        type="email"
+        id="mail"
+        class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-md text-sm rounded-lg focus:ring-main-color focus:border-main-color block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main-color dark:focus:border-main-color"
+      />
+      @if (emilControl?.touched&&emilControl?.errors) {
+      <div
+        class="flex items-center p-4 my-3 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          @if (emilControl?.getError('required')) {
+          <span class="font-medium block">Email is Required!</span>
+          }@else if (emilControl?.getError('email')) {
+          <span class="font-medium block">Email not Valid!</span>
+          }
+        </div>
+      </div>
+      }
+    </div>
+    <div class="mb-4">
+      <label
+        for="pass"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Password:</label
+      >
+      <input
+        formControlName="password"
+        type="password"
+        id="pass"
+        class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-md text-sm rounded-lg focus:ring-main-color focus:border-main-color block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main-color dark:focus:border-main-color"
+      />
+      @if (loginForm.get('password')?.errors &&
+      loginForm.get('password')?.touched) {
+      <div
+        class="flex items-center p-4 my-3 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          @if (loginForm.get('password')?.getError('required')) {
+          <span class="font-medium block">password is Required!</span>
+          } @else if(loginForm.get('password')?.getError('pattern')) {
+          <span class="font-medium block"
+            >password should to be more than 7 characters!</span
+          >
+          }
+        </div>
+      </div>
+      }
+    </div>
+    <div class="flex justify-between align-middle content-center items-center">
+      @if (msgError) {
+      <div
+        class="flex items-center p-2 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only"></span>
+        <div>
+          <span class="font-medium block">{{ msgError }}</span>
+        </div>
+      </div>
+      } @if (msgSuccess) {
+      <div
+        class="flex items-center p-2 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only"></span>
+        <div>
+          <span class="font-medium block">{{ msgSuccess }}</span>
+        </div>
+      </div>
+      }
+      <button type="submit" class="btn-main block ms-auto">
+        login @if (isLoading) {
+        <span> <i class="fas fa-spin fa-spinner"></i> </span>}
+      </button>
+    </div>
+  </form>
+</section>

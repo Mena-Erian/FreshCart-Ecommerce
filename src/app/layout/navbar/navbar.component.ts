@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faFacebook } from '../../../../node_modules/@fortawesome/free-brands-svg-icons/faFacebook';
@@ -7,6 +7,7 @@ import { faInstagram } from '../../../../node_modules/@fortawesome/free-brands-s
 import { faTiktok } from '../../../../node_modules/@fortawesome/free-brands-svg-icons/faTiktok';
 import { faYoutube } from '../../../../node_modules/@fortawesome/free-brands-svg-icons/faYoutube';
 import { faLinkedin } from '../../../../node_modules/@fortawesome/free-brands-svg-icons/faLinkedin';
+import { AuthService } from '../../core/services/auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -24,4 +25,5 @@ export class NavbarComponent {
   faTiktok = faTiktok;
   faLinkedin = faLinkedin;
   faYoutube = faYoutube;
+  public readonly authService = inject(AuthService);
 }

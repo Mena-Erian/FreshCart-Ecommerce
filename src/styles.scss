@@ -8,3 +8,24 @@
 :root {
   --main-color: #0aad0a;
 }
+.btn-main {
+  @apply disabled:bg-main-color/50 disabled:hover:bg-main-color/50 disabled:hover:text-white bg-main-color text-white px-10 py-2 rounded-md border hover:text-main-color hover:bg-transparent border-main-color font-semibold transition-colors duration-200;
+}
+body {
+  font-family: "Roboto", serif;
+}
+/*
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+.roboto-<uniquifier> {
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+*/

@@ -124,6 +124,7 @@
         } @else {
         <li>
           <a
+            (click)="this.authService.logout()"
             role="button"
             class="block py-2 px-2 text-gray-700 rounded-2xl"
             aria-current="page"
