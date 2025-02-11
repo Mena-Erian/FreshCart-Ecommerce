@@ -1,1 +1,49 @@
-<p>details works!</p>
+@if (productDetails) {
+
+<section
+  class="w-11/12 mx-auto md:mx-0 scroll-pl-2 md:w-full grid grid-cols-1 md:grid-cols-[30%_minmax(0,1fr)] bg-gray-100/20 border rounded-md items-center shadow-lg shadow-main-color/50"
+>
+  <div>
+    <owl-carousel-o [options]="customOptions">
+      @for (img of productDetails.images; track $index) {
+      <ng-template carouselSlide>
+        <img [src]="img" class="cursor-pointer rounded-md" [alt]="img" />
+      </ng-template>
+      }
+    </owl-carousel-o>
+    <!-- <img
+      [src]="productDetails.imageCover"
+      class="w-full hidden"
+      [alt]="productDetails.title"
+    /> -->
+  </div>
+  <div class="flex flex-col h-full justify-between p-5">
+    <h1 class="font-bold text-2xl">
+      {{ productDetails.title }}
+    </h1>
+
+    <p class="text-gray-600 m">
+      {{ productDetails.description }}
+    </p>
+    <div>
+      <h4 class="text-green-500 text-xs pb-1">
+        {{ productDetails.category.name }}
+      </h4>
+      <div class="flex justify-between items-centers">
+        <span>{{ productDetails.price }} EGP</span>
+        <div class="flex items-center">
+          <fa-icon [icon]="faStar" class="text-yellow-300"></fa-icon>
+          <span class="text-gray-500">{{ productDetails.ratingsAverage }}</span>
+        </div>
+      </div>
+      <button
+        class="bg-main-color hover:bg-main-color/80 transition-all mt-3 w-full px-6 mx-auto text-white py-2 sm:px-4 border rounded-md"
+      >
+        Add To Cart
+        <fa-icon [icon]="faPlus" class="text-white ms-1"></fa-icon>
+      </button>
+    </div>
+  </div>
+</section>
+
+}

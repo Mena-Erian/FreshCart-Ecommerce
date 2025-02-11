@@ -5,10 +5,11 @@ import { faStar } from './../../../../../node_modules/@fortawesome/free-solid-sv
 import { Iproduct } from '../../interfaces/iproducts';
 import { faPlus } from './../../../../../node_modules/@fortawesome/free-solid-svg-icons/faPlus';
 import { isPlatformBrowser } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-card-product',
-  imports: [FaIconComponent],
+  imports: [FaIconComponent, RouterLink],
   templateUrl: './card-product.component.html',
   styleUrl: './card-product.component.scss',
 })

@@ -2,23 +2,25 @@
 <div
   class="card border border-green-400/50 rounded-md overflow-hidden shadow relative"
 >
-  <div class="card-img">
-    <img
-      [src]="product()?.imageCover"
-      [alt]="product()?.title"
-      class="w-full h-[250px] object-contain"
-    />
-  </div>
-  <div class="card-body px-2 py-4">
-    <h4 class="text-green-500 text-xs">{{ product()?.category?.name }}</h4>
-    <h3 class="font-medium mb-2 mt-1">
-      {{ product()?.title?.split(" ", 2)?.join(" ") }}
-    </h3>
-    <div class="flex justify-between items-centers">
-      <span>{{ product()?.price }}EGP</span>
-      <div class="flex items-center">
-        <fa-icon [icon]="faStar" class="text-yellow-300"></fa-icon>
-        <span class="text-gray-500">{{ product()?.ratingsAverage }}</span>
+  <div class="cursor-pointer" [routerLink]="['/details', product()?._id]">
+    <div class="card-img">
+      <img
+        [src]="product()?.imageCover"
+        [alt]="product()?.title"
+        class="w-full h-[250px] object-contain"
+      />
+    </div>
+    <div class="card-body px-2 py-4">
+      <h4 class="text-green-500 text-xs">{{ product()?.category?.name }}</h4>
+      <h3 class="font-medium mb-2 mt-1">
+        {{ product()?.title?.split(" ", 2)?.join(" ") }}
+      </h3>
+      <div class="flex justify-between items-centers">
+        <span>{{ product()?.price }}EGP</span>
+        <div class="flex items-center">
+          <fa-icon [icon]="faStar" class="text-yellow-300"></fa-icon>
+          <span class="text-gray-500">{{ product()?.ratingsAverage }}</span>
+        </div>
       </div>
     </div>
   </div>

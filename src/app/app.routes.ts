@@ -4,6 +4,7 @@ import { BlankLayoutComponent } from './layout/blank-layout/blank-layout.compone
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { authGuard } from './core/guards/auth.guard';
 import { islogedGuard } from './core/guards/isloged.guard';
+import { DetailsComponent } from './pages/details/details.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -57,6 +58,11 @@ export const routes: Routes = [
           ),
         title: 'checkout',
       },
+      {
+        path: 'details/:id',
+        component: DetailsComponent,
+        title: 'Details',
+      },
     ],
   },
   {
@@ -78,6 +84,14 @@ export const routes: Routes = [
             (c) => c.RegisterComponent
           ),
         title: 'Register',
+      },
+      {
+        path: 'forgetPassword',
+        loadComponent: () =>
+          import('./pages/forget-password/forget-password.component').then(
+            (c) => c.ForgetPasswordComponent
+          ),
+        title: 'Forget Password',
       },
       { path: '**', component: NotFoundComponent, title: 'Not Found' },
     ],
