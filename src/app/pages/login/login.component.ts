@@ -29,6 +29,9 @@ export class LoginComponent {
     ]),
   });
   submitLogin() {
+    this.authService.setDefaultEmail(this.loginForm.controls['email'].value);
+
+    // this.authService.setDefaultEmail(this.loginForm)
     if (this.loginForm.valid) {
       this.isLoading = true;
       this.authService.logIn(this.loginForm.value).subscribe({
