@@ -1,1 +1,57 @@
-<p>cart works!</p>
+<section>
+  <p class="font-bold mb-14 text-gray-800 capitalize text-3xl text-center">
+    welcome mena erian
+    <i class="fas fa-solid fa-cart-arrow-down"></i>
+  </p>
+  <div class="flex justify-between items-center">
+    <div class="basis-5/12">
+      <img
+        class="w-[150%]"
+        src="./images/freshcart-logo.svg"
+        alt="cart image"
+      />
+    </div>
+    <div
+      class="bg-slate-200/20 basis-5/12 border border-solid border-main-color rounded p-5"
+    >
+      <h3 class="font-bold capitalize text-2xl text-center mb-5">orders</h3>
+      <p class="text-slate-500 font-semibold">
+        Products:
+        <span class="text-main-color font-normal"
+          >{{ this.cartProducts.length }} items</span
+        >
+      </p>
+      <p class="text-slate-500 font-semibold mb-3">
+        Total Price:
+        <span class="text-main-color font-normal"
+          >{{ cartData.totalCartPrice | currency : " " }} EGP</span
+        >
+      </p>
+      <button
+        type="button"
+        class="py-2 w-11/12 my-3 text-main-color block mx-auto border border-main-color rounded-md capitalize hover:bg-main-color hover:text-white font-semibold transition-colors duration-200"
+      >
+        check out
+      </button>
+      <button
+        (click)="deleteAllProducts()"
+        type="button"
+        class="py-2 w-11/12 my-3 text-rose-600 block mx-auto border border-rose-600 rounded-md capitalize"
+      >
+        clear all products
+      </button>
+    </div>
+  </div>
+  <div
+    class="mt-5 w-11/12 mx-auto bg-slate-200/20 p-4 rounded-md shadow-lg shadow-main-color border"
+  >
+    <p
+      class="text-2xl text-main-color uppercase font-bold mb-5 pb-1 border-b w-fit drop-shadow-sm"
+    >
+      all procuts:
+    </p>
+    @for (product of cartProducts; track $index) {
+    <app-cart-product [product]="product"></app-cart-product>
+    }
+  </div>
+</section>

@@ -9,3 +9,16 @@ ul li a[routerLink] {
 ul li:hover a[routerLink] {
   border: 2px solid var(--main-color);
 }
+ul li a.cart {
+  border: none !important;
+  border-bottom: 0px solid transparent !important;
+}
+ul li a.cart:hover {
+  border-bottom-width: 2px !important;
+  border-bottom-color: var(--main-color) !important;
+}
+.active-link-cart {
+  color: var(--main-color);
+  border-bottom-width: 2px !important;
+  border-bottom-color: var(--main-color) !important;
+}

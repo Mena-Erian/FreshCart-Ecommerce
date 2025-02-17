@@ -12,7 +12,7 @@
     <button
       data-collapse-toggle="navbar-default"
       type="button"
-      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
       aria-controls="navbar-default"
       aria-expanded="false"
     >
@@ -33,10 +33,10 @@
         />
       </svg>
     </button>
-    <div class="hidden w-full md:flex flex-grow md:w-auto" id="navbar-default">
+    <div class="hidden w-full lg:flex flex-grow lg:w-auto" id="navbar-default">
       @if(this.isLogin()){
       <ul
-        class="font-medium gap-y-1 md:gap-y-0 md:items-center capitalize flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-3 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+        class="font-medium gap-y-1 lg:gap-y-0 lg:items-center capitalize flex flex-col p-4 lg:p-0 mt-4 border border-gray-100 rounded-lg lg:flex-row lg:space-x-3 rtl:space-x-reverse lg:mt-0 lg:border-0 dark:bg-gray-800 lg:dark:bg-gray-900 dark:border-gray-700"
       >
         <li>
           <a
@@ -49,6 +49,16 @@
         </li>
         <li>
           <a
+            routerLink="/cart"
+            routerLinkActive="active-link"
+            class="block py-2 px-2 text-gray-700 rounded-2xl"
+            aria-current="page"
+            >Cart</a
+          >
+        </li>
+
+        <li>
+          <a
             routerLink="/products"
             routerLinkActive="active-link"
             class="block py-2 px-2 text-gray-700 rounded-2xl"
@@ -56,15 +66,7 @@
             >products</a
           >
         </li>
-        <li>
-          <a
-            routerLink="/cart"
-            routerLinkActive="active-link"
-            class="block py-2 px-2 text-gray-700 rounded-2xl"
-            aria-current="page"
-            >cart</a
-          >
-        </li>
+
         <li>
           <a
             routerLink="/categories"
@@ -86,20 +88,20 @@
       </ul>
       }
       <ul
-        class="font-medium items-center capitalize ms-auto flex flex-col px-4 pb-4 pt-0 md:p-0 border border-gray-100 rounded-lg md:flex-row md:space-x-1 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+        class="font-medium items-center capitalize ms-auto flex flex-col px-4 pb-4 pt-0 lg:p-0 border border-gray-100 rounded-lg lg:flex-row lg:space-x-1 rtl:space-x-reverse lg:mt-0 lg:border-0 dark:bg-gray-800 lg:dark:bg-gray-900 dark:border-gray-700"
       >
-        <a href="#" class="hidden md:block py-2 px-1 text-gray-700">
+        <a href="#" class="hidden lg:block py-2 px-1 text-gray-700">
           <fa-icon [icon]="faFacebook"></fa-icon>
         </a>
-        <a href="#" class="hidden md:block py-2 px-1 text-gray-700">
+        <a href="#" class="hidden lg:block py-2 px-1 text-gray-700">
           <fa-icon [icon]="faTwitter"></fa-icon> </a
-        ><a href="#" class="hidden md:block py-2 px-1 text-gray-700">
+        ><a href="#" class="hidden lg:block py-2 px-1 text-gray-700">
           <fa-icon [icon]="faTiktok"></fa-icon> </a
-        ><a href="#" class="hidden md:block py-2 px-1 text-gray-700">
+        ><a href="#" class="hidden lg:block py-2 px-1 text-gray-700">
           <fa-icon [icon]="faInstagram"></fa-icon> </a
-        ><a href="#" class="hidden md:block py-2 px-1 text-gray-700">
+        ><a href="#" class="hidden lg:block py-2 px-1 text-gray-700">
           <fa-icon [icon]="faLinkedin"></fa-icon> </a
-        ><a href="#" class="hidden md:block py-2 px-1 text-gray-700">
+        ><a href="#" class="hidden lg:block py-2 px-1 text-gray-700">
           <fa-icon [icon]="faYoutube"></fa-icon>
         </a>
         @if (!this.isLogin()) {
@@ -122,6 +124,16 @@
           >
         </li>
         } @else {
+        <li>
+          <a
+            routerLink="/cart"
+            routerLinkActive="active-link-cart"
+            class="block py-1 px-2 text-gray-700 cart transition-all duration-100"
+            aria-current="page"
+          >
+            <i class="fas fa-cart-shopping"></i>
+          </a>
+        </li>
         <li>
           <a
             (click)="this.authService.logout()"

@@ -11,12 +11,14 @@
       />
     </div>
     <div class="card-body px-2 py-4">
-      <h4 class="text-green-500 text-xs">{{ product()?.category?.name }}</h4>
+      <h4 class="text-green-500 text-xs">
+        {{ product()?.category?.name | uppercase }}
+      </h4>
       <h3 class="font-medium mb-2 mt-1">
-        {{ product()?.title?.split(" ", 2)?.join(" ") }}
+        {{ product()?.title?.split(" ", 2)?.join(" ") | titlecase }}
       </h3>
       <div class="flex justify-between items-centers">
-        <span>{{ product()?.price }}EGP</span>
+        <span>{{ product()?.price | currency : "GBP" }}</span>
         <div class="flex items-center">
           <fa-icon [icon]="faStar" class="text-yellow-300"></fa-icon>
           <span class="text-gray-500">{{ product()?.ratingsAverage }}</span>
@@ -25,11 +27,16 @@
     </div>
   </div>
   <button
+    (click)="addToCart(product()?.id)"
     class="bg-main-color hover:bg-main-color/80 transition-all absolute bottom-1 left-[50%] -translate-x-1/2 px-6 mx-auto text-white py-2 sm:px-4 border rounded-md"
   >
-    @if (this.width< 640) { Add To Cart }@else {
+    @if (isLoading) {
+    <span>
+      <i class="fas fa-spin fa-spinner"></i>
+    </span>
+    } @else { @if (this.width< 640) { Add To Cart }@else {
     <fa-icon [icon]="faPlus" class="text-white ms-1"></fa-icon>
-    }
+    } }
   </button>
 </div>
 }

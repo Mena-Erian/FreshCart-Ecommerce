@@ -2,13 +2,14 @@ import { CategoryService } from './../../core/services/category/category.service
 import { CardProductComponent } from '../../shared/components/card-product/card-product.component';
 import { IproductRoot, Iproduct } from '../../shared/interfaces/iproducts';
 import { ProductsService } from './../../core/services/products/products.service';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, Inject, inject, OnInit } from '@angular/core';
 import { ICategory, ICategoryRoot } from '../../shared/interfaces/iCategory';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
-
+import { AsyncPipe, DatePipe, JsonPipe, SlicePipe } from '@angular/common';
+//AsyncPipe
 @Component({
   selector: 'app-home',
-  imports: [CardProductComponent, CarouselModule],
+  imports: [CardProductComponent, CarouselModule, SlicePipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -73,6 +74,7 @@ export class HomeComponent implements OnInit {
       next: (res) => {
         this.productsRootRes = res;
         this.products = this.productsRootRes.data;
+        console.log(this.products);
       },
       error: (err) => {
         console.log(err);
@@ -95,4 +97,5 @@ export class HomeComponent implements OnInit {
     this.getProductsData();
     this.getCategoreisData();
   }
+  instanseFromDate = new Date();
 }

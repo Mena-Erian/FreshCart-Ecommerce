@@ -11,6 +11,12 @@
 .btn-main {
   @apply disabled:bg-main-color/50 disabled:hover:bg-main-color/50 disabled:hover:text-white bg-main-color text-white px-10 py-2 rounded-md border hover:text-main-color hover:bg-transparent border-main-color font-semibold transition-colors duration-200;
 }
+.btn-main-outline {
+  @apply disabled:bg-main-color/50 disabled:hover:bg-main-color/50 disabled:hover:text-white   px-10 py-2 text-main-color border border-main-color rounded-md capitalize hover:bg-main-color hover:text-white font-semibold transition-colors duration-200;
+}
+.btn-rose-outline {
+  @apply disabled:bg-rose-600/50 disabled:hover:bg-rose-600/50 disabled:hover:text-white   px-10 py-2 text-rose-600 border border-rose-600 rounded-md capitalize hover:bg-rose-600 hover:text-white font-semibold transition-colors duration-200;
+}
 body {
   font-family: "Roboto", serif;
 }

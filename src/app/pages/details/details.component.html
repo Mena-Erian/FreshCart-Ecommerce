@@ -18,14 +18,20 @@
     /> -->
   </div>
   <div class="flex flex-col h-full justify-between p-5">
-    <h1 class="font-bold text-2xl">
+    <h2 class="font-bold text-2xl">
       {{ productDetails.title }}
-    </h1>
+    </h2>
 
-    <p class="text-gray-600 m">
+    <p class="text-gray-600">
       {{ productDetails.description }}
     </p>
     <div>
+      <p class="text-gray-600/45 text-end">
+        Last Upate At
+        <span class="text-main-color/40">{{
+          productDetails.updatedAt | date
+        }}</span>
+      </p>
       <h4 class="text-green-500 text-xs pb-1">
         {{ productDetails.category.name }}
       </h4>

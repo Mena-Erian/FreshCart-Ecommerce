@@ -1,0 +1,38 @@
+<div
+  class="bg-fuchsia-400/0 border-b mb-2 pb-2 justify-between gap-4 items-center flex border-b-slate-800/50"
+>
+  <div class="basis-2/12">
+    <img
+      [src]="product().product.imageCover"
+      class="w-full"
+      [alt]="product().product.title"
+    />
+  </div>
+  <div class="basis-10/12 flex justify-between items-center">
+    <div>
+      <p class="text-main-color font-semibold capitalize">
+        {{ product().product.category.name }}
+      </p>
+      <h3 class="font-bold text-xl">
+        {{ product().product.title }}
+      </h3>
+
+      <p class="text-slate-700 font-normal">
+        Price:
+        <span class="text-main-color font-bold">{{ product().price }}</span>
+      </p>
+      <button
+        class="py-2 px-3 my-3 text-rose-600 border border-rose-600 rounded-md capitalize hover:bg-rose-600 hover:text-white transition-colors duration-300"
+        type="button"
+        (click)="deleteCartItem(product().product.id)"
+      >
+        <i class="fas fa-solid fa-trash-can"></i> Remove
+      </button>
+    </div>
+    <div class="flex justify-between items-center">
+      <span class="btn-main-outline !px-4 w-fit flex justify-center"> + </span>
+      <span class="font-bold mx-3">{{ product().count }}</span>
+      <span class="btn-rose-outline !px-4 w-fit flex justify-center"> - </span>
+    </div>
+  </div>
+</div>

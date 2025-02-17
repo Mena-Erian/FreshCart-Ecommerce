@@ -6,9 +6,10 @@ import { faStar } from './../../../../node_modules/@fortawesome/free-solid-svg-i
 import { faPlus } from './../../../../node_modules/@fortawesome/free-solid-svg-icons/faPlus';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-details',
-  imports: [FaIconComponent, CarouselModule],
+  imports: [FaIconComponent, CarouselModule, DatePipe],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss',
 })
