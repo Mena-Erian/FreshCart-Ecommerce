@@ -47,4 +47,20 @@ export class CartService {
       },
     });
   }
+  updateCountOfProductCart(
+    idProduct: string,
+    newCount: number
+  ): Observable<ICartRoot> {
+    return this.httpClient.put<ICartRoot>(
+      `${environment.BaseUrl}/api/v1/cart/${idProduct}`,
+      {
+        count: `${newCount}`,
+      },
+      {
+        headers: {
+          token: this.myToken,
+        },
+      }
+    );
+  }
 }

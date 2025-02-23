@@ -28,6 +28,7 @@
         >
       </p>
       <button
+        routerLink="/checkout"
         type="button"
         class="py-2 w-11/12 my-3 text-main-color block mx-auto border border-main-color rounded-md capitalize hover:bg-main-color hover:text-white font-semibold transition-colors duration-200"
       >
@@ -50,8 +51,18 @@
     >
       all procuts:
     </p>
-    @for (product of cartProducts; track $index) {
-    <app-cart-product [product]="product"></app-cart-product>
+    @if(cartProducts.length){ @for (product of cartProducts; track $index) {
+    <app-cart-product
+      (sendResEvent)="updateCartData($event)"
+      [product]="product"
+    ></app-cart-product>
+    } }@else if(cartData.totalCartPrice===0) {
+    <p class="text-xl text-center">
+      you don't have any product in cart! <br />
+      get my product
+    </p>
+    }@else {
+    <p class="text-xl text-main-color">loading...</p>
     }
   </div>
 </section>

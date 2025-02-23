@@ -30,9 +30,19 @@
       </button>
     </div>
     <div class="flex justify-between items-center">
-      <span class="btn-main-outline !px-4 w-fit flex justify-center"> + </span>
+      <span
+        (click)="updateCount(product().product.id, product().count + 1)"
+        class="btn-main-outline !px-4 w-fit flex justify-center"
+      >
+        +
+      </span>
       <span class="font-bold mx-3">{{ product().count }}</span>
-      <span class="btn-rose-outline !px-4 w-fit flex justify-center"> - </span>
+      <span
+        (click)="updateCount(product().product.id, product().count - 1)"
+        class="btn-rose-outline !px-4 w-fit flex justify-center"
+      >
+        -
+      </span>
     </div>
   </div>
 </div>

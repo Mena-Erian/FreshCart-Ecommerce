@@ -1,1 +1,204 @@
-<p>checkout works!</p>
+<section>
+  <form
+    [formGroup]="shippingAddressForm"
+    class="w-9/12 mx-auto border rounded-lg p-5 shadow shadow-main-color/75"
+    (ngSubmit)="submitForm()"
+  >
+    <h4
+      class="text-3xl mb-5 font-medium w-fit mx-auto border-b-main-color/80 border-b text-main-color capitalize"
+    >
+      checkout payment
+    </h4>
+    <div class="mb-4">
+      <label
+        [autofocus]="true"
+        for="details"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        ariaPlaceholder="Details Address"
+        >Details Address:</label
+      >
+      @let details=shippingAddressForm.get('details');
+      <input
+        formControlName="details"
+        type="text"
+        placeholder="Details Address"
+        id="details"
+        class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-md text-sm rounded-lg focus:ring-main-color focus:border-main-color block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main-color dark:focus:border-main-color"
+      />
+      @if ( details?.errors && details?.touched ) {
+      <div
+        class="flex items-center p-4 my-3 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          @if (details?.getError('required')) {
+          <span class="font-medium block">Address Details is Required!</span>
+          }
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="mb-4">
+      <label
+        for="phone"
+        ariaPlaceholder="Egyption Phone"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Phone:</label
+      >
+      @let phoneConterol=shippingAddressForm.get('phone');
+      <input
+        placeholder="01200523080"
+        formControlName="phone"
+        type="tel"
+        id="phone"
+        class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-md text-sm rounded-lg focus:ring-main-color focus:border-main-color block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main-color dark:focus:border-main-color"
+      />
+      @if (phoneConterol?.errors && phoneConterol?.touched) {
+      <div
+        class="flex items-center p-4 my-3 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          @if (phoneConterol?.getError('required')) {
+          <span class="font-medium block">phone is Required!</span>
+          }@else if(phoneConterol?.getError('pattern')){
+          <span class="font-medium block"
+            >should to be egyption valid Number!</span
+          >
+          }
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="mb-2">
+      <label
+        for="city"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        ariaPlaceholder="city Address"
+        >City / Area:</label
+      >
+      @let city=shippingAddressForm.get('city');
+      <input
+        formControlName="city"
+        type="text"
+        placeholder="City / Area"
+        id="city"
+        class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-md text-sm rounded-lg focus:ring-main-color focus:border-main-color block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main-color dark:focus:border-main-color"
+      />
+      @if ( city?.errors && city?.touched ) {
+      <div
+        class="flex items-center p-4 my-3 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          @if (city?.getError('required')) {
+          <span class="font-medium block">City is Required!</span>
+          }
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="flex justify-between items-center content-center">
+      @if (msgError) {
+      <div
+        class="flex items-center p-2 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <span class="font-medium block">{{ msgError }}!</span>
+        </div>
+      </div>
+      } @if (msgSuccess) {
+      <div
+        class="flex items-center p-2 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only"></span>
+        <div>
+          <span class="font-medium block">{{ msgSuccess }}</span>
+        </div>
+      </div>
+      }
+      <button
+        [disabled]="shippingAddressForm.invalid || isLoading"
+        type="button"
+        class="btn-main-outline hover:text-green-800 !disabled:hover:text-green-800 !bg-transparent ms-auto me-2 mt-6 !px-2 block focus:ring-main-color focus:outline-main-color"
+      >
+        Cash Credit Payment @if(isLoading){
+        <span> <i class="fas fa-spin fa-spinner"></i></span>
+        }
+      </button>
+      <button
+        [disabled]="shippingAddressForm.invalid || isLoading"
+        type="submit"
+        class="btn-main mt-6 block !px-2 focus:ring-main-color focus:outline-main-color"
+      >
+        Online Credit Payment @if(isLoading){
+        <span> <i class="fas fa-spin fa-spinner"></i></span>
+        }
+      </button>
+    </div>
+  </form>
+</section>
