@@ -19,6 +19,7 @@ import {
 } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { CartService } from '../../../core/services/cart/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-card-product',
@@ -34,6 +35,8 @@ import { CartService } from '../../../core/services/cart/cart.service';
 })
 export class CardProductComponent implements OnInit {
   public readonly cartService = inject(CartService);
+  private readonly toastrService = inject(ToastrService);
+
   product = input<Iproduct>();
   faStar = faStar;
   faPlus = faPlus;
@@ -55,6 +58,9 @@ export class CardProductComponent implements OnInit {
         next: (res) => {
           this.isLoading = false;
           console.log(res);
+          if (res.status === 'success') {
+            this.toastrService.success(res.message, res.status);
+          }
         },
         error: (err) => {
           this.isLoading = false;
