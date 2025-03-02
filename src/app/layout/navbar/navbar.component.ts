@@ -8,6 +8,8 @@ import { faTiktok } from '../../../../node_modules/@fortawesome/free-brands-svg-
 import { faYoutube } from '../../../../node_modules/@fortawesome/free-brands-svg-icons/faYoutube';
 import { faLinkedin } from '../../../../node_modules/@fortawesome/free-brands-svg-icons/faLinkedin';
 import { AuthService } from '../../core/services/auth/auth.service';
+import { CartService } from '../../core/services/cart/cart.service';
+// import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar',
@@ -16,6 +18,8 @@ import { AuthService } from '../../core/services/auth/auth.service';
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
+  private readonly cartService = inject(CartService);
+  numberOfCartItem: number = this.cartService.cartCounter;
   // isLogin:boolean=false;
   // @Input() isLogin:boolean=false;
   isLogin = input<boolean>(false);

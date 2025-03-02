@@ -9,6 +9,7 @@ import { ICartRoot } from '../../../shared/interfaces/iCart';
 })
 export class CartService {
   myToken: string = localStorage.getItem('token')!;
+  cartCounter: number = 0;
   constructor(private httpClient: HttpClient) {}
   addProductToCart(id: string): Observable<any> {
     return this.httpClient.post(`${environment.BaseUrl}/api/v1/cart`, {

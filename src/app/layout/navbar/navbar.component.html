@@ -128,10 +128,15 @@
           <a
             routerLink="/cart"
             routerLinkActive="active-link-cart"
-            class="block py-1 px-2 text-gray-700 cart transition-all duration-100"
+            class="block py-1 px-2 relative text-gray-700 cart transition-all duration-100"
             aria-current="page"
           >
             <i class="fas fa-cart-shopping"></i>
+            <span
+              class="bg-main-color absolute top-0 right-[-3] text-xs text-white p-1 rounded-lg"
+            >
+              {{ numberOfCartItem }}</span
+            >
           </a>
         </li>
         <li>

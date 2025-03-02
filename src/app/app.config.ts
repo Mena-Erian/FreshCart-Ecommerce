@@ -11,6 +11,7 @@ import {
   withEventReplay,
 } from '@angular/platform-browser';
 import {
+  HttpClient,
   provideHttpClient,
   withFetch,
   withInterceptors,
@@ -21,7 +22,17 @@ import { headersInterceptor } from './core/interceptors/headers/headers.intercep
 import { errorsInterceptor } from './core/interceptors/errors/errors.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { loadingInterceptor } from './core/interceptors/loading/loading.interceptor';
-import { provideTranslateService } from '@ngx-translate/core';
+import {
+  provideTranslateService,
+  TranslateLoader,
+  TranslateModule,
+} from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, '/i18n/', '.json');
+}
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -37,7 +48,17 @@ export const appConfig: ApplicationConfig = {
     ),
     provideAnimations(),
     provideToastr(),
-    importProvidersFrom(NgxSpinnerModule),
+    importProvidersFrom(
+      NgxSpinnerModule,
+      TranslateModule.forRoot({
+        defaultLanguage: 'ar',
+        loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient],
+        },
+      })
+    ),
     provideTranslateService({
       defaultLanguage: 'en',
     }),

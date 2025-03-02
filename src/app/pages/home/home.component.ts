@@ -6,6 +6,7 @@ import { Component, Inject, inject, OnInit } from '@angular/core';
 import { ICategory, ICategoryRoot } from '../../shared/interfaces/iCategory';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { AsyncPipe, DatePipe, JsonPipe, SlicePipe } from '@angular/common';
+import { CartService } from '../../core/services/cart/cart.service';
 //AsyncPipe
 @Component({
   selector: 'app-home',
@@ -65,6 +66,7 @@ export class HomeComponent implements OnInit {
   };
   private readonly productsService = inject(ProductsService);
   private readonly categoryService = inject(CategoryService);
+  private readonly cartService = inject(CartService);
   productsRootRes!: IproductRoot;
   products!: Iproduct[];
   categoriesRootRes!: ICategoryRoot;
@@ -73,6 +75,8 @@ export class HomeComponent implements OnInit {
     this.productsService.getAllProduct().subscribe({
       next: (res) => {
         this.productsRootRes = res;
+        this.cartService.cartCounter =
+          this.productsRootRes.metadata.numberOfPages;
         this.products = this.productsRootRes.data;
         console.log(this.products);
       },
