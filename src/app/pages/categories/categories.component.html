@@ -1,1 +1,30 @@
-<p>categories works!</p>
+<section class="px-2">
+  <h2 class="text-main-color mb-3 text-2xl capitalize font-semibold">
+    our categories
+  </h2>
+  <p class="font-light text-lg">
+    you can see our categories and each category includes the producs in it
+  </p>
+  <div
+    class="w-11/12 mx-auto mt-5 grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+  >
+    @for (categ of categories; track $index) {
+
+    <div
+      routerLink="products-of-categories"
+      class="cursor-pointer w-full border border-green-400/50 rounded-md shadow"
+    >
+      <div class="card-img">
+        <img
+          [src]="categ.image"
+          [alt]="categ.name"
+          class="w-full h-[250px] object-contain"
+        />
+      </div>
+      <h3 class="card-body px-2 py-4 text-center font-bold text-main-color">
+        {{ categ.name }}
+      </h3>
+    </div>
+    }
+  </div>
+</section>

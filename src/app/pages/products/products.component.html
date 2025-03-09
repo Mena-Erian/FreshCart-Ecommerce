@@ -1,19 +1,24 @@
-<section class="bg-slate-50">
-  <h2 class="text-main-color text-2xl uppercase font-semibold">
+<section>
+  <h2 class="text-main-color mb-7 text-2xl uppercase font-semibold">
     all products:
   </h2>
-  <div>
-    <label class="tab" for="search">Search</label>
+  <div class="w-2/3 mx-auto mb-7">
+    <label for="search">Search:</label>
     <input
       type="search"
       id="search"
-      class="bg-gray-50 border border-gray-300 text-gray-900 drop-shadow-md text-sm rounded-lg focus:ring-main-color focus:border-main-color block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main-color dark:focus:border-main-color"
+      [(ngModel)]="searchTerm"
+      class="bg-gray-50 border mt-3 border-gray-300 text-gray-900 drop-shadow-md text-sm rounded-lg focus:ring-main-color focus:border-main-color block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main-color dark:focus:border-main-color"
+      placeholder="search..."
     />
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut tempora
-      asperiores nostrum laboriosam placeat corporis aliquid aperiam
-      consequuntur laudantium. Accusantium optio aliquam provident. Odit
-      voluptatibus tenetur eaque reiciendis ab cupiditate!
-    </p>
   </div>
+  <section class="px-3">
+    <h4 class="my-4 text-4xl">Popular Products</h4>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-7">
+      @for (prod of products | searchProduct:searchTerm ; track $index) {
+      <app-card-product [product]="prod"></app-card-product>
+      }
+    </div>
+    <div class="bg-gray-400"></div>
+  </section>
 </section>

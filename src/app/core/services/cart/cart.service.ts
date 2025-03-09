@@ -1,20 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../environment/environment';
-import { ICartRoot } from '../../../shared/interfaces/iCart';
+import { ICartAddRoot, ICartRoot } from '../../../shared/interfaces/iCart';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
   myToken: string = localStorage.getItem('token')!;
-  cartCounter: number = 0;
+  cartCounter: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   constructor(private httpClient: HttpClient) {}
-  addProductToCart(id: string): Observable<any> {
-    return this.httpClient.post(`${environment.BaseUrl}/api/v1/cart`, {
-      productId: id,
-    });
+  addProductToCart(id: string): Observable<ICartAddRoot> {
+    return this.httpClient.post<ICartAddRoot>(
+      `${environment.BaseUrl}/api/v1/cart`,
+      {
+        productId: id,
+      }
+    );
   }
   getLoggedCart(): Observable<ICartRoot> {
     return this.httpClient.get<ICartRoot>(`${environment.BaseUrl}/api/v1/cart`);

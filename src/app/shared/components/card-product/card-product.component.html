@@ -14,9 +14,19 @@
       <h4 class="text-green-500 text-xs">
         {{ product()?.category?.name | uppercase }}
       </h4>
-      <h3 class="font-medium mb-2 mt-1">
-        {{ product()?.title?.split(" ", 2)?.join(" ") | titlecase }}
-      </h3>
+      <div class="font-medium mb-2 mt-1 flex justify-between items-center">
+        <h3>
+          {{ product()?.title?.split(" ", 2)?.join(" ") | titlecase }}
+        </h3>
+        <div>
+          <p class="text-[0.65rem] text-end text-gray-600">
+            {{ product()?.createdAt | date }}
+          </p>
+          <p class="text-[0.65rem] text-end text-red-500">
+            {{ product()?.quantity | stockStatus }}
+          </p>
+        </div>
+      </div>
       <div class="flex justify-between items-centers">
         <span>{{ product()?.price | currency : "GBP" }}</span>
         <div class="flex items-center">

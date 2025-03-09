@@ -64,7 +64,7 @@
 <section class="px-3">
   <h4 class="my-4 text-4xl">Popular Products</h4>
   <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-7">
-    @for (prod of products | slice : 1 : 14; track $index) {
+    @for (prod of products | slice : 1 : 25; track $index) {
     <app-card-product [product]="prod"></app-card-product>
     }
   </div>

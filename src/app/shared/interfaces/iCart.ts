@@ -47,3 +47,29 @@ export interface Subcategory {
   slug: string;
   category: string;
 }
+
+// ----
+export interface ICartAddRoot {
+  status: string;
+  message: string;
+  numOfCartItems: number;
+  cartId: string;
+  data: dataAdd;
+}
+
+interface dataAdd {
+  _id: string;
+  cartOwner: string;
+  products: ProductAdd[];
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+  totalCartPrice: number;
+}
+
+interface ProductAdd {
+  count: number;
+  _id: string;
+  product: string;
+  price: number;
+}

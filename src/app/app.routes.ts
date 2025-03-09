@@ -57,6 +57,16 @@ export const routes: Routes = [
             (c) => c.CategoriesComponent
           ),
         title: 'Categories',
+        children: [
+          {
+            path: 'products-of-categories',
+            loadComponent: () =>
+              import(
+                './pages/products-of-categories/products-of-categories.component'
+              ).then((c) => c.ProductsOfCategoriesComponent),
+            title: 'category Details',
+          },
+        ],
       },
       {
         path: 'checkout/:cartId',

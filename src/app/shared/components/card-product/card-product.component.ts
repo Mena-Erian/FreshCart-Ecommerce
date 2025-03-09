@@ -16,10 +16,13 @@ import {
   isPlatformBrowser,
   TitleCasePipe,
   UpperCasePipe,
+  JsonPipe,
+  DatePipe,
 } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { CartService } from '../../../core/services/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { StockStatusPipe } from '../../pipes/stock-status.pipe';
 
 @Component({
   selector: 'app-card-product',
@@ -29,6 +32,8 @@ import { ToastrService } from 'ngx-toastr';
     UpperCasePipe,
     CurrencyPipe,
     TitleCasePipe,
+    DatePipe,
+    StockStatusPipe,
   ],
   templateUrl: './card-product.component.html',
   styleUrl: './card-product.component.scss',
@@ -36,7 +41,7 @@ import { ToastrService } from 'ngx-toastr';
 export class CardProductComponent implements OnInit {
   public readonly cartService = inject(CartService);
   private readonly toastrService = inject(ToastrService);
-
+  devRes: object = {};
   product = input<Iproduct>();
   faStar = faStar;
   faPlus = faPlus;
@@ -57,9 +62,11 @@ export class CardProductComponent implements OnInit {
       this.cartService.addProductToCart(id).subscribe({
         next: (res) => {
           this.isLoading = false;
-          console.log(res);
+          this.devRes = res;
+          console.log(res, '   add');
           if (res.status === 'success') {
             this.toastrService.success(res.message, res.status);
+            // this.cartService.cartCounter.next(res.numOfCartItems);
           }
         },
         error: (err) => {

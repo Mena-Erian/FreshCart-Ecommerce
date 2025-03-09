@@ -34,6 +34,8 @@ export class LoginComponent {
     // this.authService.setDefaultEmail(this.loginForm)
     if (this.loginForm.valid) {
       this.isLoading = true;
+      console.log(this.loginForm.value);
+
       this.authService.logIn(this.loginForm.value).subscribe({
         next: (res) => {
           this.isLoading = false;

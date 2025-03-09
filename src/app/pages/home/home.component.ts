@@ -75,8 +75,6 @@ export class HomeComponent implements OnInit {
     this.productsService.getAllProduct().subscribe({
       next: (res) => {
         this.productsRootRes = res;
-        this.cartService.cartCounter =
-          this.productsRootRes.metadata.numberOfPages;
         this.products = this.productsRootRes.data;
         console.log(this.products);
       },
