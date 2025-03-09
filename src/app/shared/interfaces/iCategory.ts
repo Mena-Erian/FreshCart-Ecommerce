@@ -10,9 +10,13 @@ export interface ICategory {
   image: string;
   createdAt: string;
   updatedAt: string;
+  __v?: number;
 }
 export interface IMetadata {
   currentPage: number;
   numberOfPages: number;
   limit: number;
+}
+export interface IspacificCateg extends ICategory {
+  data: ICategory;
 }

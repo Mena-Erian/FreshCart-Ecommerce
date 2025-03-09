@@ -11,7 +11,7 @@
     @for (categ of categories; track $index) {
 
     <div
-      routerLink="products-of-categories"
+      [routerLink]="['/products-of-categories', categ._id]"
       class="cursor-pointer w-full border border-green-400/50 rounded-md shadow"
     >
       <div class="card-img">
