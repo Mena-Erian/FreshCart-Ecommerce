@@ -1,4 +1,11 @@
-import { Component, inject, input, OnInit } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  input,
+  OnInit,
+  Signal,
+} from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faFacebook } from '../../../../node_modules/@fortawesome/free-brands-svg-icons/faFacebook';
@@ -19,17 +26,19 @@ import { CartService } from '../../core/services/cart/cart.service';
 })
 export class NavbarComponent implements OnInit {
   private readonly cartService = inject(CartService);
-  numberOfCartItem: number = 0;
+  numberOfCartItem: Signal<number> = computed(() => 0);
   ngOnInit(): void {
     this.getNumOfCartItem();
-    this.cartService.cartCounter.subscribe({
-      next: (res) => {
-        this.numberOfCartItem = res;
-      },
-    });
+    // this.cartService.cartCounter.subscribe({
+    //   next: (res) => {
+    //     this.numberOfCartItem = res;
+    //   },
+    // });
+    this.numberOfCartItem = computed<number>(() => this.getNumOfCartItem());
   }
-  getNumOfCartItem(): void {
+  getNumOfCartItem(): number {
     this.cartService.getLoggedCart().subscribe();
+    return this.cartService.cartCounter();
   }
   // isLogin:boolean=false;
   // @Input() isLogin:boolean=false;

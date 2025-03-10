@@ -15,8 +15,10 @@ export const getCartNumInterceptor: HttpInterceptorFn = (req, next) => {
         const myRes = event.body as IMyRes;
         // console.log(myRes);
         if (myRes.numOfCartItems) {
-          // console.log(myRes.numOfCartItems, 'get inter');
-          cartService.cartCounter.next(myRes.numOfCartItems);
+          console.log(myRes.numOfCartItems, 'get inter');
+          // cartService.cartCounter.next(myRes.numOfCartItems);
+          cartService.cartCounter.set(myRes.numOfCartItems);
+          // console.log(cartService.cartCounter());
         }
       }
       return event;

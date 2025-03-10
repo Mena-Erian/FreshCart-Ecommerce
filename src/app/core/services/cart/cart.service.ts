@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal, WritableSignal } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../environment/environment';
 import { ICartAddRoot, ICartRoot } from '../../../shared/interfaces/iCart';
@@ -9,7 +9,8 @@ import { ICartAddRoot, ICartRoot } from '../../../shared/interfaces/iCart';
 })
 export class CartService {
   myToken: string = localStorage.getItem('token')!;
-  cartCounter: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  // cartCounter: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  cartCounter: WritableSignal<number> = signal<number>(0);
   constructor(private httpClient: HttpClient) {}
   addProductToCart(id: string): Observable<ICartAddRoot> {
     return this.httpClient.post<ICartAddRoot>(
