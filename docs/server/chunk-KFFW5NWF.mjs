@@ -1,0 +1,2 @@
+import './polyfills.server.mjs';
+import{w as o}from"./chunk-MREIMAJP.mjs";import{R as i,W as r}from"./chunk-CQFKIR7E.mjs";var a=class t{constructor(e){this.httpClient=e}getAllCategories(){return this.httpClient.get("https://ecommerce.routemisr.com/api/v1/categories")}getSpecificCategories(e){return this.httpClient.get(`https://ecommerce.routemisr.com/api/v1/categories/${e}`)}static \u0275fac=function(c){return new(c||t)(r(o))};static \u0275prov=i({token:t,factory:t.\u0275fac,providedIn:"root"})};export{a};
