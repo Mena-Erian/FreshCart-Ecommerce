@@ -5,9 +5,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from './../../core/services/auth/auth.service';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ import { Router, RouterLink } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy {
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
   msgError: string = '';
@@ -28,36 +29,40 @@ export class LoginComponent {
       Validators.pattern(/^[\w\.\*\+\?\^\$\(\)\[\]\{\}\|\!\@\#\%\&\~\W*]{6,}$/),
     ]),
   });
+  cancelSubscription: Subscription = new Subscription();
   submitLogin() {
     this.authService.setDefaultEmail(this.loginForm.controls['email'].value);
-
     // this.authService.setDefaultEmail(this.loginForm)
     if (this.loginForm.valid) {
       this.isLoading = true;
       console.log(this.loginForm.value);
-
-      this.authService.logIn(this.loginForm.value).subscribe({
-        next: (res) => {
-          this.isLoading = false;
-          this.msgError = '';
-          this.msgSuccess = res.message;
-          console.log(res);
-          if (res.message === 'success') {
-            localStorage.setItem('token', res?.token);
-            this.authService.saveUserData();
-            setTimeout(() => {
-              this.router.navigate(['/home']);
-            }, 1000);
-          }
-        },
-        error: (err: HttpErrorResponse) => {
-          this.isLoading = false;
-          console.log(err);
-          this.msgError = err.error.message;
-        },
-      });
+      this.cancelSubscription = this.authService
+        .logIn(this.loginForm.value)
+        .subscribe({
+          next: (res) => {
+            this.isLoading = false;
+            this.msgError = '';
+            this.msgSuccess = res.message;
+            console.log(res);
+            if (res.message === 'success') {
+              localStorage.setItem('token', res?.token);
+              this.authService.saveUserData();
+              setTimeout(() => {
+                this.router.navigate(['/home']);
+              }, 1000);
+            }
+          },
+          error: (err: HttpErrorResponse) => {
+            this.isLoading = false;
+            console.log(err);
+            this.msgError = err.error.message;
+          },
+        });
     } else {
       this.loginForm.markAllAsTouched();
     }
+  }
+  ngOnDestroy(): void {
+    this.cancelSubscription.unsubscribe();
   }
 }

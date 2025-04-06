@@ -1,5 +1,11 @@
 import { ProductsService } from './../../core/services/products/products.service';
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  Component,
+  inject,
+  OnInit,
+  signal,
+  WritableSignal,
+} from '@angular/core';
 import { CardProductComponent } from '../../shared/components/card-product/card-product.component';
 import { Iproduct } from '../../shared/interfaces/iproducts';
 import { SlicePipe } from '@angular/common';
@@ -14,7 +20,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class ProductsComponent implements OnInit {
   private readonly productsService = inject(ProductsService);
-  products: Iproduct[] = [];
+  products: WritableSignal<Iproduct[]> = signal<Iproduct[]>([]);
   searchTerm: string = '';
   ngOnInit(): void {
     this.getProducts();
@@ -23,7 +29,7 @@ export class ProductsComponent implements OnInit {
     this.productsService.getAllProduct().subscribe({
       next: (res) => {
         console.log(res);
-        this.products = res.data;
+        this.products.set(res.data);
       },
       error: (err) => {
         console.error(err);

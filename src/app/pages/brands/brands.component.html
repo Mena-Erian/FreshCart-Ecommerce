@@ -1,8 +1,29 @@
-<section>
-  <p>brands works!</p>
-</section>
-
-<!-- <p>
-    {{ totalPrice() }}
+<section class="px-2">
+  <h2 class="text-main-color mb-3 text-2xl capitalize font-semibold">
+    our Brands
+  </h2>
+  <p class="font-light text-lg">
+    you can see our Brands and each brand includes the producs in it
   </p>
-  <button class="btn-main" (click)="change()">change price</button> -->
+  <div
+    class="w-11/12 mx-auto mt-5 grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+  >
+    @for (brand of brands; track $index) {
+    <div
+      [routerLink]="['/brands-details', brand._id]"
+      class="cursor-pointer w-full border border-green-400/50 rounded-md shadow"
+    >
+      <div class="card-img">
+        <img
+          [src]="brand.image"
+          [alt]="brand.name"
+          class="w-full h-[250px] object-contain"
+        />
+      </div>
+      <h3 class="card-body px-2 py-4 text-center font-bold text-main-color">
+        {{ brand.name }}
+      </h3>
+    </div>
+    }
+  </div>
+</section>

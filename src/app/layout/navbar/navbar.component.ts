@@ -1,6 +1,7 @@
 import {
   Component,
   computed,
+  effect,
   inject,
   input,
   OnInit,
@@ -27,6 +28,11 @@ import { CartService } from '../../core/services/cart/cart.service';
 export class NavbarComponent implements OnInit {
   private readonly cartService = inject(CartService);
   numberOfCartItem: Signal<number> = computed(() => 0);
+  constructor() {
+    effect(() => {
+      console.log('doneeee', this.numberOfCartItem());
+    });
+  }
   ngOnInit(): void {
     this.getNumOfCartItem();
     // this.cartService.cartCounter.subscribe({

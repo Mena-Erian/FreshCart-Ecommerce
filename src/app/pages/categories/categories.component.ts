@@ -13,7 +13,7 @@ import { RouterLink } from '@angular/router';
 export class CategoriesComponent implements OnInit, OnDestroy {
   constructor(private categoryService: CategoryService) {}
   categories: ICategory[] = [];
-  categSubscription!: Subscription;
+  categSubscription: Subscription = new Subscription();
   ngOnInit(): void {
     this.getAllCategories();
   }

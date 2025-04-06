@@ -13,7 +13,7 @@ import { DatePipe } from '@angular/common';
 export class ProductsOfCategoriesComponent implements OnInit, OnDestroy {
   private readonly activatedRoute = inject(ActivatedRoute);
   private readonly categoryService = inject(CategoryService);
-  categSubsc!: Subscription;
+  categSubsc: Subscription = new Subscription();
   categoryData: ICategory = {} as ICategory;
   loaded: boolean = false;
   ngOnInit(): void {

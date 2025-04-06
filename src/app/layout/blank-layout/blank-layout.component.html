@@ -1,5 +1,10 @@
 <app-navbar [isLogin]="true"></app-navbar>
 <div class="container py-10">
   <router-outlet></router-outlet>
+  @if (showBtn) {
+  <button class="up-btn" (click)="goToTop()">
+    <i class="fa-solid fa-arrow-circle-up"></i>
+  </button>
+  }
 </div>
 <app-footer></app-footer>

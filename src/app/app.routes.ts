@@ -1,3 +1,4 @@
+import { BrandsService } from './core/services/brands/brands.service';
 import { Routes } from '@angular/router';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 import { BlankLayoutComponent } from './layout/blank-layout/blank-layout.component';
@@ -5,6 +6,22 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { authGuard } from './core/guards/auth.guard';
 import { islogedGuard } from './core/guards/isloged.guard';
 import { DetailsComponent } from './pages/details/details.component';
+import { inject } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { BrandsResolver } from './pages/brands-details/brands-details.resolver';
+
+function setBrandTitle(): string {
+  const brandsService = inject(BrandsService);
+  console.log(brandsService.brandName());
+  return `${brandsService.brandName()} Brand`;
+}
+
+// function setBrandTitle(route: any) {
+//   const title = inject(Title);
+//   const brandName = route.data['brand name'];
+//   const brandsService = inject(BrandsService);
+//   return title.setTitle(brandName ? `brand - ${brandName}` : 'Brand Details');
+// }
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -49,6 +66,15 @@ export const routes: Routes = [
             (c) => c.BrandsComponent
           ),
         title: 'Brands',
+      },
+      {
+        path: 'brands-details/:brandId',
+        loadComponent: () =>
+          import('./pages/brands-details/brands-details.component').then(
+            (c) => c.BrandsDetailsComponent
+          ),
+        resolve: { brandName: BrandsResolver },
+        title: setBrandTitle,
       },
       {
         path: 'categories',
